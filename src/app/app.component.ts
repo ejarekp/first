@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { WebService } from './services/web.service';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 
 
 export class AppComponent {
-  constructor() { };
+  constructor( private webService: WebService ) { };
 
  
 

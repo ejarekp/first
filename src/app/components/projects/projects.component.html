@@ -1,0 +1,27 @@
+
+
+<table class="table table-hover ">
+    <thead>
+        <tr>
+            <th  >#</th>
+            <th  >Name</th>
+            <th  >Date</th>
+            <th  >Budget</th>
+            <th  >Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let project of webService.myData | async ; index as i ">
+            <td  >{{i+1 }} </td>
+            <td  >{{project.pr_name}}</td>
+            <td  >{{project.pr_date_created | date: 'yyyy-MM-dd'  }}</td>
+            <td  >20 000,00</td>
+            <td  > 
+                    <button type="submit" class="btn btn-success btn-sm ">
+                            <i class="fa fa-arrow-circle-right fa-md"></i> Info
+                        </button>
+                    
+            </td>
+        </tr>
+    </tbody>
+</table>
