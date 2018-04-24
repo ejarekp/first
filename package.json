@@ -25,11 +25,11 @@
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
+    "node-latest-version": "^1.0.16",
     "popper.js": "^1.14.3",
     "rxjs": "^5.4.1",
     "zone.js": "^0.8.12"
   },
-  
   "devDependencies": {
     "@angular/cli": "^1.2.0",
     "@angular/compiler-cli": "^5.2.10",
@@ -47,7 +47,6 @@
     "protractor": "~5.3.1",
     "ts-node": "^6.0.0",
     "tslint": "^5.4.3",
-
-    "typescript": "^2.6.2"
+    "typescript": "^2.5.3"
   }
 }
