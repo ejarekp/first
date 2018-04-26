@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component  } from '@angular/core';
 import { WebService } from './services/web.service';
+
+
 
 
 @Component({
@@ -11,11 +13,10 @@ import { WebService } from './services/web.service';
 
 export class AppComponent {
 
-  public showSpin: boolean = true;
+  public  showSpin: boolean = true;
 
   constructor(  ) {
 
-    
    };
 
 

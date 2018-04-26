@@ -16,7 +16,7 @@ export class LoginComponent {
     
 
  constructor( private webService: WebService, private myApp: AppComponent ){
-    this.myApp.showSpin = false;
+    this.myApp.showSpinner(false);
  };
 
     

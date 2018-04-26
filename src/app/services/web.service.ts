@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
-import { Subject } from "rxjs/Rx";
+
 
 
 import { HttpClient } from '@angular/common/http';
@@ -24,6 +24,7 @@ export class WebService {
 
 
     constructor(private http: HttpClient, private myApp: AppComponent) {
+       
     }
 
 
@@ -35,35 +36,20 @@ export class WebService {
 
 
 
-    
+
+getProjects() {
+        
+    return this.http.get<IProjects>(this.BASE_URL + "projects")
+}
 
 
 
 
 
-      private mySubjet = new Subject();
-      public myProjects = this.mySubjet.asObservable();
 
 
 
 
-      getProjects() {
-        this.http.get<IProjects>(this.BASE_URL + "projects")
-        .subscribe( resp =>  {
-           
-   
-            this.mySubjet.next(resp);
-
-            this.myApp.showSpin = false;
-        }, error => {
-            this.handleError("Unable to get Data");
-          
-            
-        }
-
-    )  ;
-     
-};
 
 
 
