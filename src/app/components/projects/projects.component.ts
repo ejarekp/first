@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { WebService } from '../../services/web.service';
+import { Observable } from 'rxjs/Observable';
+
 
 @Component({
     selector: 'projects',
@@ -15,11 +17,18 @@ export class ProjectsComponent {
     constructor(private webService: WebService) { };
 
 
-    ngOnInit() {
-       this.webService.getAll('projects');
+    public posts: Observable<any>;
 
+    ngOnInit() {
+       this.posts = this.webService.getAll('projects');
        
     }
 
 }
+
+
+export interface IProjects {
+    pr_name: string;
+    pr_date_created: Date;
+  }
 
