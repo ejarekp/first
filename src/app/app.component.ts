@@ -10,9 +10,21 @@ import { WebService } from './services/web.service';
 
 
 export class AppComponent {
-  constructor( private webService: WebService ) { };
+
+  public showSpin: boolean = true;
+
+  constructor(  ) {
+
+    
+   };
+
+
+   showSpinner(show: boolean){
+    this.showSpin = show;
+   }
 
  
+
 
 
 

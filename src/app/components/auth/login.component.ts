@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { WebService } from '../../services/web.service';
+import { AppComponent } from '../../app.component';
 
 @Component({
     selector: 'login',
@@ -14,8 +15,8 @@ import { WebService } from '../../services/web.service';
 export class LoginComponent {
     
 
- constructor( private webService: WebService ){
-   // this.webService.showSpinner = false;
+ constructor( private webService: WebService, private myApp: AppComponent ){
+    this.myApp.showSpin = false;
  };
 
     

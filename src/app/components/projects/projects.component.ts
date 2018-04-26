@@ -20,15 +20,12 @@ export class ProjectsComponent {
     public posts: Observable<any>;
 
     ngOnInit() {
-       this.posts = this.webService.getAll('projects');
+       this.webService.getProjects();
+       this.posts = this.webService.myProjects;
        
     }
 
 }
+ 
 
-
-export interface IProjects {
-    pr_name: string;
-    pr_date_created: Date;
-  }
 

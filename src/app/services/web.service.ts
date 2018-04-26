@@ -4,7 +4,10 @@ import { Subject } from "rxjs/Rx";
 
 
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import {IProjects} from './interfaces';
+import { AppComponent } from '../app.component';
+
+
 
 @Injectable()
 export class WebService {
@@ -16,11 +19,11 @@ export class WebService {
 
 
 
-    //showSpinner: boolean = true;
+     //public showSpinner: boolean = true;
 
 
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private myApp: AppComponent) {
     }
 
 
@@ -31,18 +34,38 @@ export class WebService {
     }
 
 
-    getAll(url: string ){
-        return this.http.get<IProjects>(this.BASE_URL + url);
-      }
+
     
 
 
-      
+
+
+
+      private mySubjet = new Subject();
+      public myProjects = this.mySubjet.asObservable();
+
+
+
+
+      getProjects() {
+        this.http.get<IProjects>(this.BASE_URL + "projects")
+        .subscribe( resp =>  {
+           
+   
+            this.mySubjet.next(resp);
+
+            this.myApp.showSpin = false;
+        }, error => {
+            this.handleError("Unable to get Data");
+          
+            
+        }
+
+    )  ;
+     
+};
+
 
 
 }
 
-export interface IProjects {
-    pr_name: string;
-    pr_date_created: Date;
-  }
