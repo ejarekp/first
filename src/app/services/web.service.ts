@@ -10,13 +10,13 @@ import { Observable } from 'rxjs/Observable';
 export class WebService {
 
 
-    BASE_URL = 'https://glanceapp.azurewebsites.net/api/';
+  readonly  BASE_URL = 'https://glanceapp.azurewebsites.net/api/';
 
 
 
 
 
-    showSpinner: boolean = true;
+    //showSpinner: boolean = true;
 
 
 

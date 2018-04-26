@@ -15,7 +15,7 @@ export class LoginComponent {
     
 
  constructor( private webService: WebService ){
-    this.webService.showSpinner = false;
+   // this.webService.showSpinner = false;
  };
 
     
