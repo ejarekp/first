@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 
-
-
 import { HttpClient } from '@angular/common/http';
 import {IProjects} from './interfaces';
 import { AppComponent } from '../app.component';
 
+import { MatSnackBar } from "@angular/material";
 
 
 @Injectable()
@@ -17,21 +16,8 @@ export class WebService {
 
 
 
-
-
-     //public showSpinner: boolean = true;
-
-
-
-    constructor(private http: HttpClient, private myApp: AppComponent) {
+    constructor(private http: HttpClient, private myApp: AppComponent, private sb: MatSnackBar ) {
        
-    }
-
-
-
-    private handleError(errorMessage: string) {
-        console.error(errorMessage);
-      //  this.sb.open(errorMessage, 'close', { duration: 4000 });
     }
 
 
@@ -39,11 +25,15 @@ export class WebService {
 
 getProjects() {
         
-    return this.http.get<IProjects>(this.BASE_URL + "projects")
+    return this.http.get<IProjects>(this.BASE_URL + "projectss")
 }
 
 
 
+public handleError(errorMessage){
+    console.error(errorMessage);
+    this.sb.open(errorMessage, '', {duration:5000, extraClasses: ['blue-snackbar']});
+}
 
 
 

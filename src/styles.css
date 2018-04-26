@@ -1,4 +1,7 @@
-/* body{
-    background-color:#75C25A;
-  }
-   */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.blue-snackbar {
+  background: #75C25A;
+  color:black;
+ 
+}

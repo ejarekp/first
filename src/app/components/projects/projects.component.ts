@@ -7,6 +7,9 @@ import { Subject } from "rxjs/Rx";
 import { post } from 'selenium-webdriver/http';
 
 
+
+
+
 @Component({
     selector: 'projects',
     templateUrl: 'projects.component.html'
@@ -18,11 +21,11 @@ export class ProjectsComponent {
 
 
 
-    constructor(private webService: WebService, private myApp: AppComponent) {
-       //this.myApp.showSpinner(false);
-      
+    constructor(private webService: WebService, private appComponent: AppComponent) {
+
      };
 
+    // , private sb: MatSnackBar
 
     public posts: Observable<any>;
 
@@ -35,21 +38,16 @@ export class ProjectsComponent {
 
 
     private mySubjet = new Subject();
-    //private myProjects = this.mySubjet.asObservable();
+    public errMessage: string;
     showConfig() {
         this.webService.getProjects()
         .subscribe( resp =>  {
-           
-   
             this.mySubjet.next(resp);
-            this.myApp.showSpinner(false);
+            this.appComponent.showSpinner(false);
         }, error => {
-          
+            this.webService.handleError("Unable to get projects ! ");
         });
       }
-
-
-
 
 
 
