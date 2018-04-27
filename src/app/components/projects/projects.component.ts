@@ -46,6 +46,7 @@ export class ProjectsComponent {
             this.appComponent.showSpinner(false);
         }, error => {
             this.webService.handleError("Unable to get projects ! ");
+            this.appComponent.showSpinner(false);
         });
       }
 

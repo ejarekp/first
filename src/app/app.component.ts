@@ -13,7 +13,8 @@ import { WebService } from './services/web.service';
 
 export class AppComponent {
 
-  public  showSpin: boolean = true;
+  public showSpin: boolean = true;
+  public showNav: boolean = true;
 
   constructor(  ) {
 
@@ -26,7 +27,9 @@ export class AppComponent {
     this.showSpin = show;
    }
 
- 
+   showNavbar(show: boolean){
+    this.showNav = show;
+   }
 
 
 

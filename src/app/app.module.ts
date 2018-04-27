@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
-//import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
@@ -12,10 +11,12 @@ import { SpinnerComponent } from './components/shared/spinner/spinner.component'
 
 
 import { LoginComponent } from './components/auth/login.component';
+import {RegisterComponent} from './components/auth/register.component';
+
 import { ProjectsComponent } from './components/projects/projects.component';
 
 import {WebService} from './services/web.service';
-
+import {AuthService} from './services/auth.service';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -41,11 +42,13 @@ const appRoutes: Routes = [
   { path: '',
     redirectTo: '/login',
     pathMatch: 'full'
-  },
-  { path: 'projects', component: ProjectsComponent }
+  }
+  ,{ path: 'projects', component: ProjectsComponent }
+  ,{ path: 'register', component: RegisterComponent }
 
   // { path: 'hero/:id',      component: HeroDetailComponent },
 /*   ,{ path: '**', component: PageNotFoundComponent } */
+
 ];
 
 
@@ -53,20 +56,21 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
 
-    HeaderComponent,
-    SpinnerComponent,
-   
+    , HeaderComponent
+    , SpinnerComponent
+  
+    , LoginComponent
+    , RegisterComponent
 
-    LoginComponent,
-    ProjectsComponent
+    , ProjectsComponent
 
   ],
   imports: [
     BrowserModule
     ,HttpClientModule
-    ,FormsModule
+    ,FormsModule, ReactiveFormsModule
 
     , BrowserAnimationsModule
     , MatSnackBarModule
@@ -79,7 +83,7 @@ const appRoutes: Routes = [
     ,RouterModule.forRoot(appRoutes)
 
   ],
-  providers: [WebService, AppComponent],
+  providers: [WebService, AppComponent, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

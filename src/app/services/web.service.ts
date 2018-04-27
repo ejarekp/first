@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/toPromise';
+//import 'rxjs/add/operator/toPromise';
 
 import { HttpClient } from '@angular/common/http';
 import {IProjects} from './interfaces';
-import { AppComponent } from '../app.component';
+//import { AppComponent } from '../app.component';
 
 import { MatSnackBar } from "@angular/material";
 
@@ -16,7 +16,7 @@ export class WebService {
 
 
 
-    constructor(private http: HttpClient, private myApp: AppComponent, private sb: MatSnackBar ) {
+    constructor(private http: HttpClient, private sb: MatSnackBar ) {
        
     }
 
@@ -25,7 +25,7 @@ export class WebService {
 
 getProjects() {
         
-    return this.http.get<IProjects>(this.BASE_URL + "projectss")
+    return this.http.get<IProjects>(this.BASE_URL + "projects")
 }
 
 
