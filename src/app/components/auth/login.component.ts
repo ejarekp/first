@@ -30,7 +30,7 @@ export class LoginComponent {
     login() {
 
         this.auth.login(this.loginData);
-        this.appComponent.showNavbar(true);
+        
 
     }
 

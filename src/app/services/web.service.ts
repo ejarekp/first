@@ -32,7 +32,7 @@ getProjects() {
 
 public handleError(errorMessage){
     console.error(errorMessage);
-    this.sb.open(errorMessage, '', {duration:5000, extraClasses: ['blue-snackbar']});
+    this.sb.open(errorMessage, '', {duration:3000, extraClasses: ['blue-snackbar']});
 }
 
 

@@ -22,7 +22,7 @@ export class ProjectsComponent {
 
 
     constructor(private webService: WebService, private appComponent: AppComponent) {
-
+        this.appComponent.showNavbar(true);
      };
 
     // , private sb: MatSnackBar
