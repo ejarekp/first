@@ -21,7 +21,7 @@ export class RegisterComponent {
 
         this.form = fb.group({
             login: '',
-            role: '',
+            role: 1,
             password: ''
         });
 
@@ -33,6 +33,7 @@ export class RegisterComponent {
      
      onSubmit(){
         //console.log(this.form.value);
+        //this.form.role = 
         this.auth.register(this.form.value);
       }
   

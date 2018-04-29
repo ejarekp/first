@@ -24,9 +24,10 @@ export class AuthService{
 
 
 register(user){
-    this.httpClient.post<IUser>(this.BASE_URL + 'register', user)
+    this.httpClient.post<IUser>(this.BASE_URL + 'register', user , this.tokenHeader )
     .subscribe( res => 
     { 
+        
         this.authenticate(res);
         this.router.navigate(['/']);
      });
