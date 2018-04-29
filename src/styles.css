@@ -1,18 +1,15 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-.blue-snackbar {
+.red-snackbar {
+  background: #FF2400;
+  color: white;
+ 
+}
+
+
+
+.green-snackbar {
   background: #75C25A;
   color:black;
  
 }
-
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: red;
-  color: white;
-  text-align: center;
-}
-

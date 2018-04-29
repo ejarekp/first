@@ -1,29 +1,30 @@
 import {Injectable} from '@angular/core';
 //import {Http, Headers, RequestOptions} from '@angular/http';
 import { Router } from '@angular/router';
-import { HttpClient,  } from '@angular/common/http';
-import { Headers, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
+//import { Headers, RequestOptions } from '@angular/http';
 import { MatSnackBar } from "@angular/material";
-
+import {IUser} from './interfaces';
+import {Observable} from 'rxjs/Observable';
 
 
 @Injectable()
 export class AuthService{
 
+    readonly  BASE_URL = 'https://glanceapp.azurewebsites.net/auth/';
     //BASE_URL = 'http://localhost:54141/auth/';
-    readonly  BASE_URL1 = 'https://glanceapp.azurewebsites.net/auth/';
-    readonly  BASE_URL2 = 'https://glanceapp.azurewebsites.net/api/';
+    
     TOKEN_KEY = 'token';
     LOGIN_KEY = 'login';
     ROLE_KEY = 'role';
 
-  constructor(private http: HttpClient, private router: Router, private sb: MatSnackBar){}
+  constructor(private httpClient: HttpClient, private router: Router, private sb: MatSnackBar){}
 
 
 
 
 register(user){
-    this.http.post<IUser>(this.BASE_URL1 + 'register', user)
+    this.httpClient.post<IUser>(this.BASE_URL + 'register', user)
     .subscribe( res => 
     { 
         this.authenticate(res);
@@ -49,15 +50,15 @@ logout(){
 
 
 login(loginData){
-    this.http.post<IUser>(this.BASE_URL1 + 'login', loginData).subscribe(res =>
+    this.httpClient.post<IUser>(this.BASE_URL + 'login', loginData).subscribe(res =>
     {
         this.authenticate(res);
         this.router.navigate(['/projects']);
     }, error => {
-        this.handleError("Login or Password incorrect");
+        this.handleErrorAuth("Login or Password incorrect");
     });
     
-
+;
 }
 
 
@@ -81,16 +82,15 @@ else
         {
             return;
         }
-}
+};
 
 
 
 
 
-getUser(){
-   return this.http.get<IUser>(this.BASE_URL2 + "users/me");
 
-}
+
+
 
 
 
@@ -100,20 +100,38 @@ getUser(){
 
 get name(){
     return localStorage.getItem(this.LOGIN_KEY);
-}
+};
 
 get isAuthenticated() {
     return !!localStorage.getItem(this.TOKEN_KEY);
+};
+
+
+
+
+get tokenHeader() {
+    const headers = new HttpHeaders({ 
+        'Authorization': 'Bearer ' + localStorage.getItem(this.TOKEN_KEY)
+    });
+
+    const options = { headers: headers };
+    return options;
 }
 
 
-public handleError(errorMessage){
+
+
+
+
+
+public handleErrorAuth(errorMessage){
     console.error(errorMessage);
-    this.sb.open(errorMessage, '', {duration:3000, extraClasses: ['blue-snackbar']});
+    this.sb.open(errorMessage, '', {duration:3000, extraClasses: ['green-snackbar']});
 }
 
 
 
+
 }
 
 
@@ -125,9 +143,6 @@ public handleError(errorMessage){
 
 
 
-export interface IUser {
-    ser_id: number;
-    login: string;
-    role: number;
-    password: string;
-  }
+
+
+

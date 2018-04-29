@@ -6,4 +6,9 @@ export interface IProjects {
     pr_date_created: Date;
   }
 
-  
+  export interface IUser {
+    ser_id: number;
+    login: string;
+    role: number;
+    password: string;
+  }
